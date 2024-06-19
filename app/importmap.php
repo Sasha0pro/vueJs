@@ -30,4 +30,19 @@ return [
     'axios' => [
         'version' => '1.7.2',
     ],
+    'vue' => [
+        'version' => '3.4.29',
+    ],
+    '@vue/runtime-dom' => [
+        'version' => '3.4.29',
+    ],
+    '@vue/runtime-core' => [
+        'version' => '3.4.29',
+    ],
+    '@vue/shared' => [
+        'version' => '3.4.29',
+    ],
+    '@vue/reactivity' => [
+        'version' => '3.4.29',
+    ],
 ];
