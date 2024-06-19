@@ -2,24 +2,14 @@
 import axios from "axios";
 
 export default {
-  data() {
-    return {
-      content: null
-    }
-
-  },
-
   mounted() {
-    axios.get(`/book/${this.$route.params.id}/content`)
-        .then(res => {
-          this.content = res.data.data.content
-        })
+    this.$store.commit('getContent', this.$route.params.id)
   }
 }
 </script>
 
 <template>
-<h1>{{content}}</h1>
+<h1>{{$store.getters.BOOKS.content}}</h1>
 </template>
 
 <style scoped>

@@ -6,24 +6,17 @@ export default {
   components: {
     bookCardComponent: BookCardComponent
   },
-  data() {
-    return {
-      books: null
-    }
-  },
-  methods: {},
+
   mounted() {
-    axios.get('/main')
-        .then(res => {
-          this.books = res.data.data
-        })
+    this.$store.commit('getBooks')
   }
 }
+
 </script>
 
 <template>
   <router-link to="/books">my books</router-link>
-  <div v-for="book in books" class="books">
+  <div v-for="book in $store.getters.BOOKS" class="books">
     <bookCardComponent :book-id="book.id"
                        :book-title="book.title"
                        :users="book.users"

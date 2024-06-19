@@ -4,37 +4,10 @@ import axios from "axios";
 export default {
   data() {
     return{
-      username: null,
-      password: null,
-      accessToken: null
-    }
-  },
-  watch: {
-    accessToken(accessToken){
-      localStorage.accessToken = accessToken
-    }
-  },
-  methods: {
-    async auth() {
-      await axios.post('/', {
-            username: this.username,
-            password: this.password
-          },
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          })
-          .then(res => {
-            this.accessToken = res.data.accessToken
-          })
-          .catch(function (error){
-            if (error.response) {
-              console.log(error)
-            } else if (error.request) {
-              console.log(error)
-            }
-          })
+      user: {
+        username: null,
+        password: null
+      }
     }
   }
 }
@@ -42,15 +15,15 @@ export default {
 
 <template>
   <form>
+    <label for="exampleInputLogin" class="form-label">username</label><br>
     <div class="mb-3">
-      <label for="exampleInputLogin" class="form-label">username</label><br>
-      <input type="text" class="form-control-sm-3" id="exampleInputLogin" v-model="username">
+      <input type="text" class="form-control-sm-3" id="exampleInputLogin" v-model="user.username" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">password</label><br>
-      <input type="password" class="form-control-sm-3" id="exampleInputPassword1" v-model="password">
+      <input type="password" class="form-control-sm-3" v-model="user.password" id="exampleInputPassword1">
     </div>
-    <button type="button" class="btn btn-primary" @click="auth()">login</button>
+    <button type="button" @click="this.$store.commit('auth', user)" class="btn btn-primary">auth</button>
   </form>
 </template>
 

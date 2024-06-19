@@ -7,73 +7,26 @@ export default {
     bookCardComponent: BookCardComponent
   },
 
-  data() {
-    return {
-      books: null,
-      numPages: null
-    }
-  },
-
   mounted() {
-    axios.get('/books', {
-      headers: {
-        'Authorization': localStorage.getItem('accessToken')
-      }
-    })
-        .then(res => {
-          this.books = res.data.data
-          this.numPages = res.data.numPages
-        })
-  },
-
-  methods: {
-    SwitchPage(page) {
-      axios.get(`/books?page=${page}`,{
-        headers: {
-          'Authorization': localStorage.getItem('accessToken')
-        }
-      })
-          .then(res => {
-            this.books = res.data.data
-            this.numPages = res.data.numPages
-          })
-    },
-
-    DeleteBook(bookId) {
-      axios.delete(`/book/${bookId}/delete`,{
-        headers: {
-          'Authorization': localStorage.getItem('accessToken')
-        }
-      })
-
-      axios.get('/books', {
-        headers: {
-          'Authorization': localStorage.getItem('accessToken')
-        }
-      })
-          .then(res => {
-            this.books = res.data.data
-            this.numPages = res.data.numPages
-          })
-    }
+    this.$store.commit('getUserBooks')
   }
 }
 
 </script>
 
 <template>
-  <div v-for="book in books" class="books">
+  <div v-for="book in $store.getters.BOOKS" class="books">
   <bookCardComponent :book-id="book.id"
                      :book-title="book.title"
                      :users="book.users"
                      class="card"
                      @click="DeleteBook(book.id)"
   />
-    <button class="btn btn-danger" @click="DeleteBook(book.id)">delete</button>
+    <button class="btn btn-danger" @click="$store.commit('deleteBook', book.id)">delete</button>
     <button class="btn btn-primary" @click="$router.push(`/book/${book.id}/update`)">update</button>
   </div>
 
-  <button v-for="page in numPages" class="btn btn-primary" @click="SwitchPage(page)">{{page}}</button>
+  <button v-for="page in $store.getters.NUMPAGES" class="btn btn-primary" @click="$store.commit('switchPage', page)">{{page}}</button>
 </template>
 
 <style scoped>
