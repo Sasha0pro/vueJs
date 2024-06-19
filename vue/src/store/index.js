@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import axios, {Axios} from "axios";
+import axios from "axios";
 
 const store = createStore({
     state () {
