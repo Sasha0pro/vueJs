@@ -8,7 +8,7 @@ export default {
   },
 
   mounted() {
-    this.$store.commit('getBooks')
+    this.$store.dispatch('getBooks')
   }
 }
 

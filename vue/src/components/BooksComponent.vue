@@ -8,7 +8,7 @@ export default {
   },
 
   mounted() {
-    this.$store.commit('getUserBooks')
+    this.$store.dispatch('getUserBooks')
   }
 }
 
@@ -22,11 +22,11 @@ export default {
                      class="card"
                      @click="DeleteBook(book.id)"
   />
-    <button class="btn btn-danger" @click="$store.commit('deleteBook', book.id)">delete</button>
+    <button class="btn btn-danger" @click="$store.dispatch('deleteBook', book.id)">delete</button>
     <button class="btn btn-primary" @click="$router.push(`/book/${book.id}/update`)">update</button>
   </div>
 
-  <button v-for="page in $store.getters.NUMPAGES" class="btn btn-primary" @click="$store.commit('switchPage', page)">{{page}}</button>
+  <button v-for="page in $store.getters.NUMPAGES" class="btn btn-primary" @click="$store.dispatch('switchPage', page)">{{page}}</button>
 </template>
 
 <style scoped>

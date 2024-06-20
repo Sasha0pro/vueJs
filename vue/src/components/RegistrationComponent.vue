@@ -25,7 +25,7 @@ export default {
       <label for="exampleInputPassword1" class="form-label">password</label><br>
       <input type="password" class="form-control-sm-3" v-model="user.password" id="exampleInputPassword1">
     </div>
-    <button type="button" @click="$store.commit('registration', user)" class="btn btn-primary">registration</button>
+    <button type="button" @click="$store.dispatch('registration', user)" class="btn btn-primary">registration</button>
   </form>
 </template>
 

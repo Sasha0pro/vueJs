@@ -12,9 +12,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.commit('getAuthors')
-  },
-  methods: {
+    this.$store.dispatch('getAuthors')
   }
 }
 
@@ -36,7 +34,7 @@ export default {
         <option v-for="author in $store.getters.USERS" v-bind:value="author.id">{{author.username}}</option>
       </select>
     </div>
-    <button type="button" class="btn btn-success" @click="$store.commit('createBook', book)">create</button>
+    <button type="button" class="btn btn-success" @click="$store.dispatch('createBook', book)">create</button>
   </form>
 </template>
 

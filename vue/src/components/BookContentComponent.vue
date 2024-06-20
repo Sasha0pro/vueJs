@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default {
   mounted() {
-    this.$store.commit('getContent', this.$route.params.id)
+    this.$store.dispatch('getContent', this.$route.params.id)
   }
 }
 </script>
