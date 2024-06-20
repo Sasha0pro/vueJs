@@ -2843,3 +2843,4 @@ f94cd0,127.0.0.1,POST,http://localhost:8000/,1718871088,,200,request
 841158,127.0.0.1,POST,http://localhost:8000/,1718871097,,200,request
 a4ca5c,127.0.0.1,POST,http://localhost:8000/registration,1718871199,,201,request
 0818d1,127.0.0.1,GET,http://localhost:8000/authors,1718871397,,200,request
+18267c,127.0.0.1,GET,http://localhost:8000/authors,1718871772,,200,request

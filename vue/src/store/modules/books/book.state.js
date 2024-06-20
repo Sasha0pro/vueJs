@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const state = {
-            book: null,
-            numPages: null
+    book: null,
+    numPages: null
     }
 const mutations = {
     setBooks(state, books) {

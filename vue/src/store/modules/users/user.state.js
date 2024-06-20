@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const state = {
-            users: null,
-            accessToken: null,
+    users: null,
+    accessToken: null,
 }
 
 const getters = {
