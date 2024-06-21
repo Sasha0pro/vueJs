@@ -15,12 +15,12 @@ const mutations = {
 }
 
 const getters = {
-        BOOKS: state => {
+    BOOKS: state => {
             return state.book
-        },
-        NUMPAGES: state => {
+    },
+    NUMPAGES: state => {
             return state.numPages
-        }
+    }
 }
 
 const actions = {
